@@ -2,12 +2,11 @@ const profiles = require('../data/profiles.json');
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    if (profiles !== null && profiles.length > 0) {
-      resolve(profiles);
-      return;
+    if (profiles === null || profiles.length === 0) {
+      reject('there is no data');
     }
 
-    resolve([]);
+    resolve(profiles);
   });
 }
 
