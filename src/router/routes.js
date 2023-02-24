@@ -6,4 +6,4 @@ router.get('/profiles', (req, res) => {
   getProfiles(req, res);
 });
 
-module.exports = { router };
+module.exports = router;
