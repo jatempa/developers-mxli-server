@@ -1,6 +1,6 @@
-const profiles = require('../data/profiles.json');
+import profiles from '../data/profiles.json';
 
-function findAll() {
+export const findAll = () => {
   return new Promise((resolve, reject) => {
     if (profiles === null || profiles.length === 0) {
       reject('there is no data');
@@ -8,6 +8,4 @@ function findAll() {
 
     resolve(profiles);
   });
-}
-
-module.exports = { findAll };
+};
