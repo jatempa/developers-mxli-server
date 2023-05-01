@@ -1,4 +1,4 @@
-const { Router } = require('express');
+import { Router } from 'express';
 const router = Router();
 const { getProfiles } = require('../controllers/profileController.js');
 
@@ -6,4 +6,4 @@ router.get('/profiles', (req, res) => {
   getProfiles(req, res);
 });
 
-module.exports = router;
+export default router;
