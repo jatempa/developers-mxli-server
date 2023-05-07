@@ -1,5 +1,6 @@
 import { comparePasswords, createJWT, hashPassword } from '../modules/auth';
 import { NextFunction, Request, Response } from 'express';
+import { v4 } from 'uuid';
 
 const createNewUser = async (
   req: Request,
@@ -7,16 +8,14 @@ const createNewUser = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req);
-    // const user = await prisma.user.create({
-    //   data: {
-    //     username: req.body.username,
-    //     password: await hashPassword(req.body.password),
-    //   },
-    // });
-    // const token = createJWT(user);
-    // res.json({ token });
-    res.json({ result: 'OK SUCCESS ' });
+    const user = {
+      ...req.body,
+      id: v4(),
+      password: await hashPassword(req.body.password),
+    };
+
+    const token = createJWT(user);
+    res.json({ token });
   } catch (e) {
     next(e);
   }
