@@ -5,7 +5,6 @@ import { findAll } from '../models/profileModel';
 export const getProfiles = async (req, res) => {
   try {
     const products = await findAll();
-
     res.status(200).send(products);
   } catch (error) {
     console.log(error);
