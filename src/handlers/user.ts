@@ -1,6 +1,6 @@
 import { comparePasswords, createJWT, hashPassword } from '../modules/auth';
 import { NextFunction, Request, Response } from 'express';
-import { v4 } from 'uuid';
+import prisma from '../db';
 
 const createNewUser = async (
   req: Request,
@@ -8,11 +8,14 @@ const createNewUser = async (
   next: NextFunction
 ) => {
   try {
-    const user = {
-      ...req.body,
-      id: v4(),
-      password: await hashPassword(req.body.password),
-    };
+    const user = await prisma.user.create({
+      data: {
+        ...req.body,
+        password: await hashPassword(req.body.password),
+      },
+    });
+
+    console.log(user);
 
     const token = createJWT(user);
     res.json({ token });
