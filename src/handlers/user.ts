@@ -15,8 +15,6 @@ const createNewUser = async (
       },
     });
 
-    console.log(user);
-
     const token = createJWT(user);
     res.json({ token });
   } catch (e) {
