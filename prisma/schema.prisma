@@ -16,14 +16,7 @@ model User {
   firstName  String?
   lastName String?
   githubAccount String @unique
-  skills Skill[]
+  skills String[]
   employed Boolean
   password  String
-}
-
-model Skill {
-  id        Int     @id @default(autoincrement())
-  name     String
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
 }
