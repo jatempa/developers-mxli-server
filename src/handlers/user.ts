@@ -16,7 +16,7 @@ const createNewUser = async (
     // });
     // const token = createJWT(user);
     // res.json({ token });
-    res.send('OK SUCCESS ');
+    res.json({ result: 'OK SUCCESS ' });
   } catch (e) {
     next(e);
   }
