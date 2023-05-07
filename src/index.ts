@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({ origin: '*' }));
 app.use('/api', router);
 // Create user
 app.post('/user', createNewUser);
